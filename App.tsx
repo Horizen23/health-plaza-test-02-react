@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Provider } from 'react-redux';
+import storeConfig from './src/store/store';
+import MainNavigation from './src/navigation/MainNavigation';
+import LoginScreen from './src/screen/LoginScreen';
+import MainScreen from './src/screen/MainScreen';
+import { PersistGate } from 'redux-persist/integration/react';
+import SplashScreen from './src/screen/SplashScreen';
 
-export default function App() {
+const App: React.FC = () => {
+ 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={storeConfig.store}> 
+      <PersistGate loading={<SplashScreen />} persistor={storeConfig.persistor}>
+        <MainScreen/>
+      </PersistGate>
+    </Provider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
