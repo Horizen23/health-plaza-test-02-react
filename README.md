@@ -2,7 +2,7 @@
 
 ### Prerequisites
 
-List any software or tools that need to be installed before setting up your project. For example:
+List any software or tools that need to be installed before setting:
 - Node.js  v19.5.0
 - Expo CLI
 
